@@ -36,6 +36,7 @@ data.train.full <- rbind(data.train, data.validation)
 
 data.dir <- '~/Projects/kaggle-onlinenewspopularity/data'
 model <- randomForest.train(data.train.full)
+# Generates a new predictions file using datetime as file prefix
 generatePredictionsFile(model, data.dir)
 ```
 
