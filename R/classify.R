@@ -6,6 +6,7 @@ library(randomForest)
 #' 
 #' @param data.train matrix or data frame with training data
 #' @param label column name of the class identified with the row
+#' @param seed number to set as seed in case required for recreating exact results
 #'
 #' @return randomForest model trained on training data
 #' @export
@@ -13,7 +14,8 @@ library(randomForest)
 #' @examples
 #' # model <- randomForest.train(data.train)
 #' 
-randomForest.train <- function(data.train, label = 'popularity') {
+randomForest.train <- function(data.train, seed = 187, label = 'popularity') {
+  set.seed(seed)
   data.train[,label] <- factor(data.train[,label])
   randomForest(x = data.train[,setdiff(colnames(data.train), label)], y = data.train[,label])
 }
