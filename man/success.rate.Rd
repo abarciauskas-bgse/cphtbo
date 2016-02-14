@@ -18,7 +18,7 @@ success rate as float point
 success.rate
 }
 \examples{
-success.rate(model$predicted, data.train$popularity)
+# success.rate(model$predicted, data.train$popularity)
 
 }
 

@@ -16,7 +16,7 @@ loglik(model)
 loglik
 }
 \examples{
-loglik(model)
+# loglik(model)
 
 }
 

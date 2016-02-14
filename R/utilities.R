@@ -1,7 +1,3 @@
-if (!require('assertthat')) install.packages('assertthat')
-
-# Helper functions
-
 # ----------------------------------------------------------------------
 # Cross-Validation of a Classifier Algorithm
 # ----------------------------------------------------------------------
@@ -20,11 +16,11 @@ if (!require('assertthat')) install.packages('assertthat')
 #'
 #' @examples
 #' # Example with multinom
-# cross.val(model.function = multinom, model.args = list(formula = popularity ~ ., data = training), data = training)
-# $rates
-# [1] 0.4941667 0.4810417 0.4658333 0.4770833 0.4935417
-# $mean.rate
-# [1] 0.4823333
+#  # cross.val(model.function = multinom, model.args = list(formula = popularity ~ ., data = training), data = training)
+#  # $rates
+#  # [1] 0.4941667 0.4810417 0.4658333 0.4770833 0.4935417
+#  # $mean.rate
+#  # [1] 0.4823333
 #
 cross.val <- function(model.function, model.args = list(), data.train, no.subsets = 5) {
   assert_that(nrow(data.train) > 0)
@@ -90,7 +86,7 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
 #' @export
 #'
 #' @examples
-#' success.rate(model$predicted, data.train$popularity)
+#' # success.rate(model$predicted, data.train$popularity)
 #' 
 success.rate <- function(predictions, actual) {
   assert_that(length(predictions) == length(actual))
@@ -118,7 +114,7 @@ success.rate <- function(predictions, actual) {
 #' @export
 #'
 #' @examples
-#' loglik(model)
+#' # loglik(model)
 #' 
 loglik <- function(model) {
   assert_that(exists(paste0(deparse(substitute(model)),'$deviance')))

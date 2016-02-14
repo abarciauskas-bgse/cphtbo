@@ -19,7 +19,8 @@ cross.val(model.function, model.args = list(), data.train, no.subsets = 5)
 list(rates, mean.rates) success rates and mean success rates of algorithm on each subset
 }
 \description{
-Any required libraries to run the classification algorithm should already be loaded
+Runs k-fold cross validation via rolling window.
+Any required libraries to run the classification algorithm should already be loaded.
 }
 \examples{
 # Example with multinom
