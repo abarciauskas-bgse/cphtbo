@@ -2,4 +2,6 @@
 
 export(cross.val)
 export(loglik)
+export(randomForest.train)
+export(setupOnlineNewsData)
 export(success.rate)
