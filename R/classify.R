@@ -12,6 +12,7 @@ library(randomForest)
 #' @export
 #'
 #' @examples
+#' # model <- randomForest.train(data.train.full)
 #' 
 randomForest.train <- function(data.train, seed = 187, label = 'popularity') {
   set.seed(seed)
