@@ -31,3 +31,15 @@ setupOnlineNewsData <- function(directory = '') {
   data.train <- data.train[train.indices,]
   return(list(data.train = data.train, data.validation = data.validation))
 }
+
+generatePredictionsFile <- function(model, data.directory = '') {
+  setwd(data.directory)
+  data.test <- read.csv('news_popularity_test.csv')
+  # remove id and url
+  x.test <- data.test[,3:ncol(data.test)]
+  preds <- predict(model, x.test)
+  predictions <- cbind(id=data.test[,'id'], popularity=preds)
+  filename <- paste0(as.numeric(Sys.time()),'-predictions.csv')
+  print(paste0('Writing predictions to file: ', filename))
+  write.csv(predictions, filename, row.names = FALSE)
+}
