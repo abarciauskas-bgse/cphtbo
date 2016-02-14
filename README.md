@@ -23,3 +23,9 @@ model <- randomForest.train(data.train)
 preds <- predict(model, data.validation[,1:59])
 success.rate(preds, data.validation[,'popularity'])
 ```
+
+## Additionally...
+
+`cross.val` [ADD ME]
+`loglik` [ADD ME]
+
