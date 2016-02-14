@@ -1,3 +1,4 @@
+library(assertthat)
 #' setupOnlineNewsData
 #' Requires local copies of data from https://inclass.kaggle.com/c/predicting-online-news-popularity/data
 #' Removes id and url from data
@@ -51,6 +52,7 @@ setupOnlineNewsData <- function(directory = '') {
 #' # Generates a new predictions file using datetime as file prefix
 #' # generatePredictionsFile(model, data.dir)
 generatePredictionsFile <- function(model, data.directory = '') {
+  assert_that(mode(model) == 'list')
   setwd(data.directory)
   data.test <- read.csv('news_popularity_test.csv')
   # remove id and url

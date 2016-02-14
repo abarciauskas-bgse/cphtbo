@@ -4,10 +4,12 @@
 \alias{randomForest.train}
 \title{randomForest.train}
 \usage{
-randomForest.train(data.train, label = "popularity")
+\method{randomForest}{train}(data.train, seed = 187, label = "popularity")
 }
 \arguments{
 \item{data.train}{matrix or data frame with training data}
+
+\item{seed}{number to set as seed in case required for recreating exact results}
 
 \item{label}{column name of the class identified with the row}
 }
@@ -18,7 +20,7 @@ randomForest model trained on training data
 randomForest.train
 }
 \examples{
-# randomForest.train(data.train)
+# model <- randomForest.train(data.train)
 
 }
 

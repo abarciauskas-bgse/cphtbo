@@ -2,7 +2,8 @@
 % Please edit documentation in R/utilities.R
 \name{cross.val}
 \alias{cross.val}
-\title{cross.val}
+\title{Runs k-fold cross validation via rolling window.
+Any required libraries to run the classification algorithm should already be loaded.}
 \usage{
 cross.val(model.function, model.args = list(), data.train, no.subsets = 5)
 }

@@ -45,6 +45,15 @@ generatePredictionsFile(model, data.dir)
 * `cross.val` Runs k-fold cross validation via rolling window.
 * `loglik` Calculates Log Likelihood from model deviance (model passed as argument must respond to `deviance`)
 
+## Contributing
+
+```{r}
+# Build the package
+R -e 'devtools::install()'
+# Generate documentation
+R -e 'devtools::document()'
+```
+
 ## Authors
 
 * Aimee Barciauskas
