@@ -9,7 +9,7 @@
 \arguments{
 \item{data.train}{matrix or data frame with training data}
 
-\item{seed}{number to set as seed in case required for recreating exact results}
+\item{seed}{if required for recreating exact results}
 
 \item{label}{column name of the class identified with the row}
 }
@@ -20,7 +20,6 @@ randomForest model trained on training data
 randomForest.train
 }
 \examples{
-# model <- randomForest.train(data.train)
 
 }
 
