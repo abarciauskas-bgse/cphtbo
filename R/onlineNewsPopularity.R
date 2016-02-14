@@ -48,7 +48,7 @@ setupOnlineNewsData <- function(directory = '') {
 #'
 #' @examples
 #' # data.dir <- '~/Projects/kaggle-onlinenewspopularity/data'
-#' # model <- randomForest.train(data.train.full)
+#' # model <- train.randomForest(data.train.full)
 #' # Generates a new predictions file using datetime as file prefix
 #' # generatePredictionsFile(model, data.dir)
 generatePredictionsFile <- function(model, data.directory = '') {

@@ -23,7 +23,7 @@ data <- setupOnlineNewsData(data.dir)
 data.train <- data[['data.train']]
 data.validation <- data[['data.validation']]
 
-model <- randomForest.train(data.train)
+model <- train.randomForest(data.train)
 preds <- predict(model, data.validation[,1:59])
 success.rate(preds, data.validation[,'popularity'])
 
@@ -35,7 +35,7 @@ success.rate(preds, data.validation[,'popularity'])
 data.train.full <- rbind(data.train, data.validation)
 
 data.dir <- '~/Projects/kaggle-onlinenewspopularity/data'
-model <- randomForest.train(data.train.full)
+model <- train.randomForest(data.train.full)
 # Generates a new predictions file using datetime as file prefix
 generatePredictionsFile(model, data.dir)
 ```
