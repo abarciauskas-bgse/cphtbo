@@ -19,4 +19,8 @@ randomForest model trained on training data
 \description{
 randomForest.train
 }
+\examples{
+# randomForest.train(data.train)
+
+}
 
