@@ -7,10 +7,10 @@
 loglik(model)
 }
 \arguments{
-\item{model}{model which should respond to deviance}
+\item{model}{object which responds to `deviance`}
 }
 \value{
--model$deviance/2
+= -model$deviance/2
 }
 \description{
 loglik

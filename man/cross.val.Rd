@@ -2,7 +2,8 @@
 % Please edit documentation in R/utilities.R
 \name{cross.val}
 \alias{cross.val}
-\title{Runs k-fold cross validation via rolling window.
+\title{cross.val
+Runs k-fold cross validation via rolling window.
 Any required libraries to run the classification algorithm should already be loaded.}
 \usage{
 cross.val(model.function, model.args = list(), data.train, no.subsets = 5)
@@ -17,13 +18,20 @@ cross.val(model.function, model.args = list(), data.train, no.subsets = 5)
 \item{no.subsets}{number of folds to run cross-validation on. Defaults to 5.}
 }
 \value{
-list(rates, mean.rates) success rates and mean success rates of algorithm on each subset
+list(rates, mean.rates) - percentage successful predictions and mean success rate of 
+  training and testing no.subsets
 }
 \description{
+cross.val
 Runs k-fold cross validation via rolling window.
 Any required libraries to run the classification algorithm should already be loaded.
 }
 \examples{
 # Example with multinom
+# cross.val(model.function = multinom, model.args = list(formula = popularity ~ ., data = training), data = training)
+# $rates
+# [1] 0.4941667 0.4810417 0.4658333 0.4770833 0.4935417
+# $mean.rate
+# [1] 0.4823333
 }
 

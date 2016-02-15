@@ -13,7 +13,7 @@ success.rate(predictions, actual)
 \item{actual}{vector of actual values}
 }
 \value{
-success rate as float point
+percentage correct predictions
 }
 \description{
 success.rate
