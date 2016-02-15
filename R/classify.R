@@ -18,7 +18,6 @@ train.randomForest <- function(data.train, seed = 187, label = 'popularity') {
   data.train[,label] <- factor(data.train[,label])
   model <- randomForest(
     x = data.train[,setdiff(colnames(data.train), label)],
-    y = data.train[,label],
-    importance = TRUE)
+    y = data.train[,label])
   return(model)
 }
