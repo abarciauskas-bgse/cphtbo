@@ -42,8 +42,21 @@ generatePredictionsFile(model, data.dir)
 
 ## Additionally...
 
-* `cross.val` Runs k-fold cross validation via rolling window.
-* `loglik` Calculates Log Likelihood from model deviance (model passed as argument must respond to `deviance`)
+**`cross.val`** Runs k-fold cross validation via rolling window.
+
+```{r}
+res <- cross.val(
+  model.function = train.randomForest,
+  model.args = list(data.train = data.train.full),
+  data.train = data.train.full)
+```
+
+**`loglik`** Calculates Log Likelihood from model deviance (model passed as argument must respond to `deviance`)
+
+```{r}
+model <- multinom(popularity ~ ., data = data.train)
+loglik(model)
+```
 
 ## Contributing
 

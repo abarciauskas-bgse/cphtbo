@@ -2,7 +2,8 @@
 % Please edit documentation in R/utilities.R
 \name{success.rate}
 \alias{success.rate}
-\title{success.rate}
+\title{success.rate
+returns percentage correct predictions}
 \usage{
 success.rate(predictions, actual)
 }
@@ -16,6 +17,7 @@ success rate as float point
 }
 \description{
 success.rate
+returns percentage correct predictions
 }
 \examples{
 # success.rate(model$predicted, data.train$popularity)

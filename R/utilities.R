@@ -63,8 +63,8 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
       preds <- preds + 1
     }
     sr <- success.rate(preds, test.y)
-    print(paste0('Success rate: ', as.numeric(sr)))
-    rates <- append(rates, as.numeric(sr))
+    print(paste0('Success rate: ', sr))
+    rates <- append(rates, sr)
   }
   return(list(rates = rates, mean.rate = mean(rates)))
 }
@@ -74,6 +74,7 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
 # Success Rate of predictions vs actual values
 # ----------------------------------------------------------------------
 #' success.rate
+#' returns percentage correct predictions
 #'
 #' @param predictions vector of predictions
 #' @param actual vector of actual values
@@ -86,10 +87,14 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
 #' 
 success.rate <- function(predictions, actual) {
   assert_that(length(predictions) == length(actual))
+  predictions <- as.numeric(predictions)
+  print(predictions)
+  actual <- as.numeric(actual)
+  print(actual)
   errors <- 0
   # count number of mistakes
   for (i in 1:length(actual)) {
-    if (predictions[i] != actual[i]) {
+    if (!(predictions[i] == actual[i])) {
       errors <- errors + 1
     }
   }
