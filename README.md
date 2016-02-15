@@ -54,6 +54,7 @@ res <- cross.val(
 **`loglik`** Calculates Log Likelihood from model deviance (model passed as argument must respond to `deviance`)
 
 ```{r}
+if (!require('nnet')) install.packages('nnet')
 model <- multinom(popularity ~ ., data = data.train)
 loglik(model)
 ```
