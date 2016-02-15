@@ -88,9 +88,7 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
 success.rate <- function(predictions, actual) {
   assert_that(length(predictions) == length(actual))
   predictions <- as.numeric(predictions)
-  print(predictions)
   actual <- as.numeric(actual)
-  print(actual)
   errors <- 0
   # count number of mistakes
   for (i in 1:length(actual)) {
@@ -98,9 +96,7 @@ success.rate <- function(predictions, actual) {
       errors <- errors + 1
     }
   }
-  print(paste0('Number of errors: ', errors))
   rate <- 1 - errors/length(actual)
-  print(paste0('Rate: ', rate))
   return (1 - errors/length(actual))
 }
 
