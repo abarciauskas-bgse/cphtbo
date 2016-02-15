@@ -1,4 +1,3 @@
-library(randomForest)
 # ----------------------------------------------------------------------
 # Train randomForest model on training data
 # ----------------------------------------------------------------------
@@ -17,6 +16,8 @@ library(randomForest)
 train.randomForest <- function(data.train, seed = 187, label = 'popularity') {
   set.seed(seed)
   data.train[,label] <- factor(data.train[,label])
-  model <- randomForest(x = data.train[,setdiff(colnames(data.train), label)], y = data.train[,label])
+  model <- randomForest(
+    x = data.train[,setdiff(colnames(data.train), label)],
+    y = data.train[,label])
   return(model)
 }

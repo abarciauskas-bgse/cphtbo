@@ -1,5 +1,3 @@
-library(assertthat)
-library(xgboost)
 #' 
 #' Runs k-fold cross validation via rolling window.
 #' Any required libraries to run the classification algorithm should already be loaded.

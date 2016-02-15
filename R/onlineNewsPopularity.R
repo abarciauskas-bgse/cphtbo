@@ -1,4 +1,3 @@
-library(assertthat)
 #' setupOnlineNewsData
 #' Requires local copies of data from https://inclass.kaggle.com/c/predicting-online-news-popularity/data
 #' Removes id and url from data
