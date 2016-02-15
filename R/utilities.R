@@ -1,4 +1,7 @@
-#' 
+# ----------------------------------------------------------------------
+# K-Fold Cross Validation
+# ----------------------------------------------------------------------
+#' cross.val
 #' Runs k-fold cross validation via rolling window.
 #' Any required libraries to run the classification algorithm should already be loaded.
 #'
@@ -7,16 +10,17 @@
 #' @param data.train data frame or matrix of training data, depending on what the algorithm requires
 #' @param no.subsets number of folds to run cross-validation on. Defaults to 5.
 #'
-#' @return list(rates, mean.rates) success rates and mean success rates of algorithm on each subset
+#' @return list(rates, mean.rates) - percentage successful predictions and mean success rate of 
+#'   training and testing no.subsets
 #' @export
 #'
 #' @examples
 #' # Example with multinom
-#  # cross.val(model.function = multinom, model.args = list(formula = popularity ~ ., data = training), data = training)
-#  # $rates
-#  # [1] 0.4941667 0.4810417 0.4658333 0.4770833 0.4935417
-#  # $mean.rate
-#  # [1] 0.4823333
+#' # cross.val(model.function = multinom, model.args = list(formula = popularity ~ ., data = training), data = training)
+#' # $rates
+#' # [1] 0.4941667 0.4810417 0.4658333 0.4770833 0.4935417
+#' # $mean.rate
+#' # [1] 0.4823333
 #
 cross.val <- function(model.function, model.args = list(), data.train, no.subsets = 5) {
   assert_that(nrow(data.train) > 0)
@@ -79,7 +83,7 @@ cross.val <- function(model.function, model.args = list(), data.train, no.subset
 #' @param predictions vector of predictions
 #' @param actual vector of actual values
 #'
-#' @return success rate as float point
+#' @return percentage correct predictions
 #' @export
 #'
 #' @examples
@@ -105,9 +109,9 @@ success.rate <- function(predictions, actual) {
 # ----------------------------------------------------------------------
 #' loglik
 #'
-#' @param model model which should respond to deviance
+#' @param model object which responds to `deviance`
 #'
-#' @return -model$deviance/2
+#' @return = -model$deviance/2
 #' @export
 #'
 #' @examples

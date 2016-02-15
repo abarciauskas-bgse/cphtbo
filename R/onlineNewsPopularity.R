@@ -1,3 +1,6 @@
+# ----------------------------------------------------------------------
+# Setup datasets for training and validation
+# ----------------------------------------------------------------------
 #' setupOnlineNewsData
 #' Requires local copies of data from https://inclass.kaggle.com/c/predicting-online-news-popularity/data
 #' Removes id and url from data
@@ -33,7 +36,7 @@ setupOnlineNewsData <- function(directory = '') {
 }
 
 # ----------------------------------------------------------------------
-# Generates predictions on the test data
+# Generate predictions on the test data
 # ----------------------------------------------------------------------
 #' generatePredictionsFile
 #' Generates predictions on the test data using the model passed as an argument 
