@@ -118,7 +118,7 @@ success.rate <- function(predictions, actual) {
 #' # loglik(model)
 #' 
 loglik <- function(model) {
-  assert_that(exists(paste0(deparse(substitute(model)),'$deviance')))
+  assert_that('deviance' %in% names(model))
   # deviance = -2 log likelihoods
   -model$deviance/2
 }
