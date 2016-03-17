@@ -15,8 +15,6 @@ library(cphtbo)
 ## Use
 
 ```{r}
-library(cphtbo)
-
 data('news_popularity_training')
 data('news_popularity_test')
 
@@ -38,6 +36,8 @@ success.rate(preds, data.validation$popularity)
 ## Replicate results
 
 Replicates results from 16032016-2-final-predictions.csv submission @Wed, 16 Mar 2016 22:11:30
+
+**NOTE: This assumes you are in the root cphtbo directory, where the `16032016-2-final-predictions.csv` is stored.**
 
 ```{r}
 # Generate predictions for REAL test set
