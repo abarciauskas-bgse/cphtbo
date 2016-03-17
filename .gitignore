@@ -3,3 +3,4 @@
 .RData
 .Rbuildignore
 *[0-9]-predictions.csv
+inst/doc

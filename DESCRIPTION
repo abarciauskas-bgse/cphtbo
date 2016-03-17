@@ -11,3 +11,6 @@ Imports:
     xgboost,
     assertthat,
     randomForest
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
