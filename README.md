@@ -82,6 +82,9 @@ cd cphtbo
 ```
 
 ```{r}
+# if loaded
+# detach('package:cphtbo', unload = TRUE)
+
 library(devtools)
 # Build the package
 devtools::install()
