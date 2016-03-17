@@ -34,9 +34,9 @@ train.randomForest <- function(
   # generate priors on all the classes if requested
   classwts <- NA
   if (use.classwts) {
-    no.classes <- length(unique(data.train[,'label']))
+    no.classes <- length(unique(data.train[,label]))
     classwts <- sapply(1:no.classes, function(cl) {
-      sum(data[,label] == cl)/nrow(data)
+      sum(data.train[,label] == cl)/nrow(data.train)
     })
   }
 

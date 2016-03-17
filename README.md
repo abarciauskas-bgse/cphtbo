@@ -17,24 +17,42 @@ library(cphtbo)
 ```{r}
 library(cphtbo)
 
-train <- remove.extra.cols(data('news_popularity_training'))
-test <- data('news_popularity_test')
+data('news_popularity_training')
+data('news_popularity_test')
+
+train <- remove.extra.cols(news_popularity_training)
+test <- news_popularity_test
 
 # Split the data for validating the model
-partitions <- training.paritions(train, p = 0.2)
-data.train <- parititions$data.train
-data.validation <- parititions$data.validation
+partitions <- training.partitions(train, p = 0.2)
+data.train <- partitions$data.train
+data.validation <- partitions$data.validation
 
 # Validate the model
 model <- train.randomForest(data.train)
 preds <- predict(model, data.validation[,1:59])
 # Accuracy on validation set
 success.rate(preds, data.validation$popularity)
+```
 
-# Generate predictions
+## Replicate results
+
+Replicates results from 16032016-2-final-predictions.csv submission @Wed, 16 Mar 2016 22:11:30
+
+```{r}
+# Generate predictions for REAL test set
+# Replicates results from 16032016-2-final-predictions.csv submission @Wed, 16 Mar 2016 22:11:30
 model <- train.randomForest(train)
 # Generates a new predictions file using datetime as file prefix
-generate.predictions.file(model, test)
+file <- generate.predictions.file(model, test)
+```
+
+Test for equality:
+
+```{r}
+expected <- read.csv('final-predictions.csv')
+new <- read.csv(file)
+assert_that(all(expected[,2] == new[,2]))
 ```
 
 ## Additionally...
@@ -44,8 +62,8 @@ generate.predictions.file(model, test)
 ```{r}
 res <- cross.val(
   model.function = train.randomForest,
-  model.args = list(data.train = data.train.full),
-  data.train = data.train.full)
+  model.args = list(data.train = data.train),
+  data.train = data.train)
 ```
 
 **`loglik`** Calculates Log Likelihood from model deviance (model passed as argument must respond to `deviance`)
@@ -58,11 +76,17 @@ loglik(model)
 
 ## Contributing
 
+```{sh}
+git clone git@github.com:abarciauskas-bgse/cphtbo.git
+cd cphtbo
+```
+
 ```{r}
+library(devtools)
 # Build the package
-R -e 'devtools::install()'
+devtools::install()
 # Generate documentation
-R -e 'devtools::document()'
+devtools::document()
 ```
 
 ## Authors

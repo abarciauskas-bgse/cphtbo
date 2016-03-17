@@ -6,15 +6,13 @@
 Generates predictions on the test data using the model passed as an argument 
 and then writes them to a file for submission}
 \usage{
-generate.predictions.file(model, test.data, data.directory = "")
+generate.predictions.file(model, test.data)
 }
 \arguments{
 \item{model}{model for generating predictions on test data}
-
-\item{data.directory}{data where online news test data is stored, also where predictions file will be written}
 }
 \value{
-n/a
+filename - filename of generated predictions file (just written to disk)
 }
 \description{
 generatePredictionsFile
