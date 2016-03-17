@@ -1,10 +1,10 @@
 Package: cphtbo
-Title: What the Package Does (one line, title case)
+Title: Mashable Popularity Predictions
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Aimee", "Barciauskas", email = "aimee.barciauskas@barcelonagse.eu", role = c("aut", "cre"))
+Description: Creates predictions of popularity classes 1-5 for mashable online news articles for in-class kaggle competition.
 Depends: R, assertthat, randomForest
-License: What license is it under?
+License: https://opensource.org/licenses/MIT
 LazyData: true
 RoxygenNote: 5.0.1
 Imports:
