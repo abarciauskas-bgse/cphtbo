@@ -4,7 +4,8 @@
 \alias{train.randomForest}
 \title{train.randomForest}
 \usage{
-train.randomForest(data.train, seed = 187, label = "popularity")
+train.randomForest(data.train, seed = 214, label = "popularity",
+  use.classwts = TRUE)
 }
 \arguments{
 \item{data.train}{matrix or data frame with training data}
@@ -12,6 +13,8 @@ train.randomForest(data.train, seed = 187, label = "popularity")
 \item{seed}{if required for recreating exact results}
 
 \item{label}{column name of the class identified with the row}
+
+\item{use.classwts}{boolean for whether or not to use priors on the classes in the forest. Defaults to TRUE}
 }
 \value{
 randomForest model trained on training data

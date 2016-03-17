@@ -1,38 +1,38 @@
 # ----------------------------------------------------------------------
 # Setup datasets for training and validation
 # ----------------------------------------------------------------------
-#' setupOnlineNewsData
-#' Requires local copies of data from https://inclass.kaggle.com/c/predicting-online-news-popularity/data
-#' Removes id and url from data
-#' Splits data into train and validation sets, randomly
+#' remove.extra.cols
+#' Removes url and id columns
 #' 
-#' @param directory local directory with online news datasets (see https://inclass.kaggle.com/c/predicting-online-news-popularity/data)
+#' @param data
 #'
-#' @return list(data.train = data.train, data.validation = data.validation)
+#' @return data without url and id columns
 #' @export
 #'
 #' @examples
-#' data <- setupOnlineNewsData('~/Projects/kaggle-onlinenewspopularity/data')
-#' data.train <- data[['data.train']]
-#' data.validation <- data[['data.validation']]
+#' data.train <- data('news_popularity_training')
+#' data.test <- data('news_popularity_test')
+#' training.data <- remove.extra.cols(data)
+#' test.data <- remove.extra.cols(data)
 #' 
-# TODO:  add argument for size of validation set
-setupOnlineNewsData <- function(directory = '') {
-  setwd(directory)
-  
-  # Read in data
-  data.train <- read.csv('news_popularity_training.csv')
-  nobs <- nrow(data.train)
-  
+remove.extra.cols <- function(data) {
+  see_if(is.matrix(data) || is.data.frame(data))
   # Remove id and url
-  data.train <- data.train[,3:ncol(data.train)]
-  
-  # Use 20% for validation
-  validation.indices <- sample(nobs, 0.2*nobs)
-  train.indices <- setdiff(1:nobs, validation.indices)
-  data.validation <- data.train[validation.indices,]
-  data.train <- data.train[train.indices,]
-  return(list(data.train = data.train, data.validation = data.validation))
+  data <- data[,c('url','id')]
+  return(data)
+}
+
+training.partitions <- function(data.train, p = 0.2) {
+  see_if(is.matrix(data.train) || is.data.frame(data.train))
+  see_if(is.number(p))
+
+  nobs <- nrow(data.train)
+  val.idcs <- sample(nobs, p*nobs)
+  data.validation <- data.train[val.idcs,]
+  data.train <- data.train[-val.idcs,]
+  return(list(
+    data.train = data.train,
+    data.validation = data.validation))
 }
 
 # ----------------------------------------------------------------------
@@ -49,19 +49,26 @@ setupOnlineNewsData <- function(directory = '') {
 #' @export
 #'
 #' @examples
-#' # data.dir <- '~/Projects/kaggle-onlinenewspopularity/data'
-#' # model <- train.randomForest(data.train.full)
-#' # Generates a new predictions file using datetime as file prefix
-#' # generatePredictionsFile(model, data.dir)
-generatePredictionsFile <- function(model, data.directory = '') {
-  assert_that(mode(model) == 'list')
-  setwd(data.directory)
-  data.test <- read.csv('news_popularity_test.csv')
+#' train <- remove.extra.cols(data('news_popularity_training'))
+#' test <- data('news_popularity_test')
+#' model <- train.randomForest(train)
+#' generate.predictions.file(model, test)
+#' 
+generate.predictions.file <- function(model, test.data, data.directory = '') {
+  see_if(is.list(model))
+
+  data.test <- data('news_popularity_test')
+
   # remove id and url
-  x.test <- data.test[,3:ncol(data.test)]
+  x.test <- remove.extra.cols(data.test)
+
+  # Make predictions
   preds <- predict(model, x.test)
+
+  # Add ids to predictions
   predictions <- cbind(id=data.test[,'id'], popularity=preds)
   filename <- paste0(as.numeric(Sys.time()),'-predictions.csv')
+
   print(paste0('Writing predictions to file: ', filename))
   write.csv(predictions, filename, row.names = FALSE)
 }
