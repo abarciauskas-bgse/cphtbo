@@ -50,7 +50,7 @@ file <- generate.predictions.file(model, test)
 Test for equality:
 
 ```{r}
-expected <- read.csv('final-predictions.csv')
+expected <- read.csv('16032016-2-final-predictions.csv')
 new <- read.csv(file)
 assert_that(all(expected[,2] == new[,2]))
 ```
